@@ -1,0 +1,60 @@
+/* Inquiry.css */
+
+.InquiryBody {
+  margin: 0;
+  padding-top: 20px;
+  height: 100vh;
+  position: relative;
+  background-image: url('');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inquiry-form {
+  max-width: 400px;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9; /* Light gray background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold; /* Make labels bold */
+}
+
+input[type='text'],
+input[type='email'],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+textarea {
+  height: 100px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

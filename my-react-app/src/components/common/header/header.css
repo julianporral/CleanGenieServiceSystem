@@ -1,0 +1,84 @@
+/*--------head------------*/
+.head {
+  padding: 20px 0;
+  color:black;
+}
+.logo h1 {
+  font-size: 35px;
+  font-weight: 900;
+}
+.head .icon {
+  margin-left: 10px;
+}
+/*--------head-----*/
+/*--------header--------*/
+header {
+  background-color: rgba(52, 132, 185, 0.2);
+  margin: 0 auto; 
+  max-width: 1300px; /* Optionally set a max-width to limit the width of the header */
+}
+
+header .nav {
+  display: flex !important;
+}
+header li {
+  margin-right: 40px;
+}
+header ul {
+  padding: 30px 20px;
+}
+header ul li a {
+  color: #080505;
+  font-weight: 500;
+  transition: 0.5s;
+  transition: color 0.3s ease, transform 0.3s ease;
+ 
+}
+header ul li a:hover {
+  color: #1e77b2;
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+.start {
+  background-color: #1e77b2;
+  padding: 30px 70px;
+  color: white;
+  clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
+  font-weight: bolder;
+}
+.toggle {
+  display: none;
+}
+/*--------header------------*/
+@media screen and (max-width: 768px) {
+  .start {
+    clip-path: none;
+  }
+  header {
+    margin: 0;
+    background-color: #145b85;
+    position: relative;
+  }
+  header ul.flexSB {
+    display: none;
+  }
+  header ul li {
+    margin-bottom: 20px;
+  }
+  .toggle {
+    display: block;
+    background: none;
+    color: #c49b9b;
+    font-size: 30px;
+    position: absolute;
+    right: 20px; /* Adjust the distance from the right side */
+    top: -20px;
+  }
+  .mobile-nav {
+    position: absolute;
+    top: 7vh;
+    left: 0;
+    width: 100%;
+    background-color:#1385be;
+  }
+}
