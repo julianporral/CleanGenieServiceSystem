@@ -1,12 +1,14 @@
 /*--------head------------*/
 .head {
-  padding: 20px 0;
-  color:black;
+  padding: 10px 0;
+  color: black;
 }
+
 .logo h1 {
   font-size: 35px;
   font-weight: 900;
 }
+
 .head .icon {
   margin-left: 10px;
 }
@@ -14,38 +16,44 @@
 /*--------header--------*/
 header {
   background-color: rgba(52, 132, 185, 0.2);
-  margin: 0 auto; 
-  max-width: 1300px; /* Optionally set a max-width to limit the width of the header */
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 10px 20px;
+  border-radius: 8px; /* Maintain the same border radius */
 }
 
 header .nav {
   display: flex !important;
+  justify-content: center; /* Align items horizontally at the center */
 }
-header li {
-  margin-right: 40px;
-}
+
 header ul {
-  padding: 30px 20px;
+  padding: 5px 20px; /* Adjusted padding */
+  margin: 0; /* Remove default margins */
 }
+
+header ul li {
+  margin: 0 20px; /* Adjusted margin */
+}
+
 header ul li a {
   color: #080505;
   font-weight: 500;
-  transition: 0.5s;
   transition: color 0.3s ease, transform 0.3s ease;
- 
 }
+
 header ul li a:hover {
   color: #1e77b2;
   transform: translateY(-5px);
-  transition: transform 0.3s ease;
 }
+
 .start {
-  background-color: #1e77b2;
-  padding: 30px 70px;
+  padding: 5px 20px; /* Adjusted padding */
   color: white;
-  clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
   font-weight: bolder;
+  clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
 }
+
 .toggle {
   display: none;
 }
@@ -58,6 +66,7 @@ header ul li a:hover {
     margin: 0;
     background-color: #145b85;
     position: relative;
+
   }
   header ul.flexSB {
     display: none;
@@ -79,6 +88,6 @@ header ul li a:hover {
     top: 7vh;
     left: 0;
     width: 100%;
-    background-color:#1385be;
+    background-color: #1385be;
   }
 }

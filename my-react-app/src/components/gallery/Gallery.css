@@ -1,56 +1,96 @@
-
-
-.bodygallery {
-  padding: 20px;
-  text-align: center;
-}
+/* Gallery.css */
 
 .gallery {
   max-width: 800px;
   margin: 0 auto;
+  padding: 20px;
 }
 
-.album-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.gallery-title {
+  font-size: 24px;
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.albums-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .album {
-  position: relative;
+  flex: 0 0 calc(33.33% - 20px);
   cursor: pointer;
+  transition: transform 0.3s ease; 
 }
 
-.album-images {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.image {
-  width: calc(33.33% - 10px);
-  margin: 5px;
+.album:hover {
+  transform: scale(1.05); 
 }
 
 .album-title {
   font-size: 18px;
-  margin-top: 10px;
-  text-align: center;
-  padding: 8px 16px;
+  margin-bottom: 10px;
+  text-align: center;}
+
+.album-cover {
+  width: 100%;
+  max-width: 100%;
+  border: 4px solid lightblue; 
+  box-sizing: border-box; 
+}
+
+
+.selected-image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected-image {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.exit-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
-  background-color: #08b1ff;
-  color: #fff;
+  color: black;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  padding: 5px 10px;
 }
 
-.album-title:hover {
-  background-color: #0056b3;
+.prev-btn,
+.next-btn {
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  color: black;
+  cursor: pointer;
+  padding: 5px 10px;
 }
 
-@media (max-width: 600px) {
-  .image {
-    width: calc(50% - 10px);
-  }
+.prev-btn {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.next-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
 }

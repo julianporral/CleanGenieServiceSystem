@@ -3,7 +3,7 @@ export const homeAbout = [
       id: 1,
       cover: "https://img.icons8.com/dotty/80/000000/storytelling.png",
       title: "Contacts",
-      desc: "Lorem ipsum",
+      desc: "Contact Number and..",
     },
     {
       id: 1,

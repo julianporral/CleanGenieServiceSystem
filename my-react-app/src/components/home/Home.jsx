@@ -3,8 +3,10 @@ import Hero from "./hero/Hero";
 import AboutCard from "../about/AboutCard";
 import Gallery from "../gallery/Gallery";
 import Services from "../services/Services";
-import Inquiry from "../inquiry/Inquiry";
+
 import "./Home.css"; // Import the CSS file
+import InfoContacts from "../LastInf&Message/InfoContacts";
+import Info from "../MoreInfo/Info";
 
 const Home = () => {
   // Function to scroll to the top of the page
@@ -26,13 +28,13 @@ const Home = () => {
       <section id="services">
         <Services />
       </section>
-      <section id="inquiry">
-        <Inquiry />
-      </section>
+      <Info/>
       <section id="gallery">
         <Gallery />
       </section>
-      {/* Button to scroll to the top */}
+     
+     <InfoContacts/>
+
       <button 
         className="back-to-top-button" 
         onClick={scrollToTop}

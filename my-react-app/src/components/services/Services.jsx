@@ -45,8 +45,8 @@ const Services = () => {
       </div>
 
       {modalVisible && (
-        <div className="modal" onClick={closeModal}>
-          <div className="modal-content">
+        <div className="modal-background" onClick={closeModal}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
             <span className="close" onClick={closeModal}>&times;</span>
             <img src={`image${selectedService}.jpg`} alt={`Image ${selectedService}`} />
             <div className="image-info">

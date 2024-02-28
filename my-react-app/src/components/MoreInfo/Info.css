@@ -1,0 +1,25 @@
+    /* Info.css */
+
+    .semi-header {
+        background-image: url('InfoImg.png'); 
+        background-position: center;
+        background-size: cover; /* Ensure the background image covers the entire container */
+        padding: 50px 20px; 
+        text-align: center; 
+    }
+    
+    .info-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .info-title {
+        font-size: 24px;
+        margin-bottom: 20px; 
+    }
+    
+    .info-content {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    

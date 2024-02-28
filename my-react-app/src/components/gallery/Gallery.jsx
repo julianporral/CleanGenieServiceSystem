@@ -2,12 +2,9 @@
 import React, { useState } from 'react';
 import './Gallery.css';
 
-const Image = ({ src, alt }) => (
-  <img src={src} alt={alt} className="image" />
-);
-
 const Gallery = () => {
-  const [expandedAlbum, setExpandedAlbum] = useState(null);
+  const [selectedAlbumIndex, setSelectedAlbumIndex] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   const albums = [
     {
@@ -42,35 +39,57 @@ const Gallery = () => {
     },
   ];
 
-  const toggleAlbum = (index) => {
-    setExpandedAlbum(expandedAlbum === index ? null : index);
+  const handleAlbumClick = (albumIndex) => {
+    setSelectedAlbumIndex(albumIndex);
+    setSelectedImageIndex(0); // Display the first image when an album is clicked
   };
 
-  const Album = ({ title, images, index }) => (
-    <div className="album-container">
-      <button className="album-title" onClick={() => toggleAlbum(index)}>
-        {title}
-      </button>
-      <div className="album" onClick={() => toggleAlbum(index)}>
-        {expandedAlbum === index && (
-          <div className="album-images">
-            {images.map((image, index) => (
-              <Image key={index} src={image.src} alt={image.alt} />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  const handlePrevImage = () => {
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex === 0 ? albums[selectedAlbumIndex].images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextImage = () => {
+    setSelectedImageIndex((prevIndex) =>
+      prevIndex === albums[selectedAlbumIndex].images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handleCloseModal = () => {
+    setSelectedAlbumIndex(null);
+    setSelectedImageIndex(null);
+  };
 
   return (
-    <div className='bodygallery'>
-      <div className="gallery">
-        <h1 className="gallery-title">Gallery</h1>
+    <div className="gallery">
+      <h1 className="gallery-title">Gallery</h1>
+      <div className="albums-container">
         {albums.map((album, index) => (
-          <Album key={index} index={index} title={album.title} images={album.images} />
+          <div className="album" key={index} onClick={() => handleAlbumClick(index)}>
+            <h2 className="album-title">{album.title}</h2>
+            <img src={album.images[0].src} alt={album.images[0].alt} className="album-cover" />
+          </div>
         ))}
       </div>
+      {selectedAlbumIndex !== null && selectedImageIndex !== null && (
+        <div className="selected-image-modal">
+          <button className="exit-btn" onClick={handleCloseModal}>
+            X
+          </button>
+          <img
+            src={albums[selectedAlbumIndex].images[selectedImageIndex].src}
+            alt={albums[selectedAlbumIndex].images[selectedImageIndex].alt}
+            className="selected-image"
+          />
+          <button className="prev-btn" onClick={handlePrevImage}>
+            Prev
+          </button>
+          <button className="next-btn" onClick={handleNextImage}>
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
