@@ -1,9 +1,9 @@
 import React from "react";
 import Heading from "../common/heading/Heading";
 import { homeAbout } from "../../dummydata";
-import { Link } from "react-router-dom"; // Import Link component
+import { Link } from "react-router-dom"; 
 import "./About.css";
-import Contacts from "./AboutInfo/Background/Contacts"; // Import Contacts component
+import Contacts from "./AboutInfo/Background/Contacts"; 
 
 const AboutCard = () => {
   return (
@@ -18,7 +18,7 @@ const AboutCard = () => {
             <div className='items'>
               {homeAbout.map((val, index) => (
                 <div className="item-link" key={index}>
-                  {/* Wrap each item with a Link to a different component */}
+              
                   {index === 0 && (
                     <Link to={`/background`} className='item-link'>
                       <div className='item flexSB'>
@@ -46,7 +46,7 @@ const AboutCard = () => {
                     </Link>
                   )}
                   {index === 2 && (
-                    <Link to={`/contacts`} className='item-link'> {/* Link to the Contacts component */}
+                    <Link to={`/contacts`} className='item-link'> 
                       <div className='item flexSB'>
                         <div className='img'>
                           <img src={val.cover} alt='' />
@@ -64,7 +64,7 @@ const AboutCard = () => {
           </div>
         </div>
       </section>
-      {/* Include the Contacts component */}
+    
       <Contacts />
     </>
   );

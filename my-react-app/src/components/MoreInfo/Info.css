@@ -3,7 +3,7 @@
     .semi-header {
         background-image: url('InfoImg.png'); 
         background-position: center;
-        background-size: cover; /* Ensure the background image covers the entire container */
+        background-size: cover; 
         padding: 50px 20px; 
         text-align: center; 
     }

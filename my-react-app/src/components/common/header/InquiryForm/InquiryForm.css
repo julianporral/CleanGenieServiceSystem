@@ -1,34 +1,32 @@
-/* InquiryForm.css */
 
-/* Overlay styles */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    background-color: rgba(0, 0, 0, 0.5); 
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    align-items: center; 
   }
   
- /* InquiryForm.css */
+ 
 
-/* Modal styles */
+
 .modal {
-    background-color: #fff; /* White background */
-    max-width: 350px; /* Adjusted max-width */
-    max-height: 80vh; /* Maximum height of 80% of viewport height */
-    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #fff; 
+    max-width: 350px; 
+    max-height: 80vh; 
+    overflow-y: auto;
     width: 90%;
-    padding: 20px; /* Adjusted padding */
+    padding: 20px; 
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
     position: relative;
   }
   
-  /* Close button styles */
+
   .close-bar {
     position: absolute;
     top: 10px;
@@ -45,9 +43,8 @@
     color: #333;
   }
   
-  /* Form styles */
   .form-group {
-    margin-bottom: 15px; /* Reduced margin */
+    margin-bottom: 15px; 
   }
   
   .form-group label {
@@ -60,9 +57,9 @@
   .form-group input,
   .form-group textarea {
     width: 100%;
-    padding: 8px; /* Reduced padding */
-    margin-top: 5px; /* Reduced margin */
-    margin-bottom: 10px; /* Reduced margin */
+    padding: 8px; 
+    margin-top: 5px; 
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './InquiryForm.css'; // Import the CSS file for styling
+import './InquiryForm.css'; 
 
 const InquiryForm = ({ onClose }) => {
   const [formData, setFormData] = useState({

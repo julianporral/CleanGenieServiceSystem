@@ -1,4 +1,4 @@
-/*--------head------------*/
+
 .head {
   padding: 10px 0;
   color: black;
@@ -12,28 +12,27 @@
 .head .icon {
   margin-left: 10px;
 }
-/*--------head-----*/
-/*--------header--------*/
+
 header {
   background-color: rgba(52, 132, 185, 0.2);
   margin: 0 auto;
   max-width: 1300px;
   padding: 10px 20px;
-  border-radius: 8px; /* Maintain the same border radius */
+  border-radius: 8px;
 }
 
 header .nav {
   display: flex !important;
-  justify-content: center; /* Align items horizontally at the center */
+  justify-content: center; 
 }
 
 header ul {
-  padding: 5px 20px; /* Adjusted padding */
-  margin: 0; /* Remove default margins */
+  padding: 5px 20px; 
+  margin: 0; 
 }
 
 header ul li {
-  margin: 0 20px; /* Adjusted margin */
+  margin: 0 20px; 
 }
 
 header ul li a {
@@ -48,7 +47,7 @@ header ul li a:hover {
 }
 
 .start {
-  padding: 5px 20px; /* Adjusted padding */
+  padding: 5px 20px; 
   color: white;
   font-weight: bolder;
   clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
@@ -57,7 +56,7 @@ header ul li a:hover {
 .toggle {
   display: none;
 }
-/*--------header------------*/
+/*--------Tanginang hheader to nakaka bobo------------*/
 @media screen and (max-width: 768px) {
   .start {
     clip-path: none;
@@ -80,7 +79,7 @@ header ul li a:hover {
     color: #c49b9b;
     font-size: 30px;
     position: absolute;
-    right: 20px; /* Adjust the distance from the right side */
+    right: 20px; 
     top: -20px;
   }
   .mobile-nav {
