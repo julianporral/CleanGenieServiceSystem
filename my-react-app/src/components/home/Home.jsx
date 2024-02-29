@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
       <section id="hero">
-        <Hero />
+        <Hero/>
       </section>
       <section id="about">
         <AboutCard />

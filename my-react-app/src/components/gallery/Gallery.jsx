@@ -41,7 +41,7 @@ const Gallery = () => {
 
   const handleAlbumClick = (albumIndex) => {
     setSelectedAlbumIndex(albumIndex);
-    setSelectedImageIndex(0); // Display the first image when an album is clicked
+    setSelectedImageIndex(0); 
   };
 
   const handlePrevImage = () => {
