@@ -4,12 +4,11 @@ import AboutCard from "../about/AboutCard";
 import Gallery from "../gallery/Gallery";
 import Services from "../services/Services";
 
-import "./Home.css"; // Import the CSS file
+import "./Home.css"; 
 import InfoContacts from "../LastInf&Message/InfoContacts";
 import Info from "../MoreInfo/Info";
 
 const Home = () => {
-  // Function to scroll to the top of the page
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
