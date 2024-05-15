@@ -1,0 +1,11 @@
+.Certificate {
+    text-align: center;
+    padding-top: 50px;
+    text-decoration: none;
+}
+
+.Certificate ul li {
+    text-align: left;
+    padding-left: 100px;
+    padding-top: 20px;
+}

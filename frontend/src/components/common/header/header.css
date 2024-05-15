@@ -1,0 +1,93 @@
+
+.head {
+  padding: 10px 0;
+  color: black;
+}
+
+.logo h1 {
+  font-size: 35px;
+  font-weight: 900;
+}
+
+.head .icon {
+  margin-left: 10px;
+}
+
+header {
+  background-color: rgba(52, 132, 185, 0.2);
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+header .nav {
+  display: flex !important;
+  justify-content: center; 
+}
+
+header ul {
+  padding: 5px 20px; 
+  margin: 0; 
+}
+
+header ul li {
+  margin: 0 20px; 
+}
+
+header ul li a {
+  color: #080505;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header ul li a:hover {
+  color: #1e77b2;
+  transform: translateY(-5px);
+}
+
+.start {
+  padding: 5px 20px; 
+  color: white;
+  font-weight: bolder;
+  clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.toggle {
+  display: none;
+}
+
+/*--------Tanginang hheader to nakaka bobo------------*/
+@media screen and (max-width: 768px) {
+  .start {
+    clip-path: none;
+  }
+  header {
+    margin: 0;
+    background-color: #145b85;
+    position: relative;
+
+  }
+  header ul.flexSB {
+    display: none;
+  }
+  header ul li {
+    margin-bottom: 20px;
+  }
+  .toggle {
+    display: block;
+    background: none;
+    color: #c49b9b;
+    font-size: 30px;
+    position: absolute;
+    right: 20px; 
+    top: -20px;
+  }
+  .mobile-nav {
+    position: absolute;
+    top: 7vh;
+    left: 0;
+    width: 100%;
+    background-color: #1385be;
+  }
+}

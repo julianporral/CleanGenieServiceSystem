@@ -1,0 +1,40 @@
+.Contacts {
+    text-align: left;
+    font-weight: bolder;
+    padding-top: 50px;
+    padding-left: 100px;
+    font-size: xx-large ;
+}
+.Info {
+    padding-left: 100px;
+}
+nav ul li {
+    text-align: left;
+    padding-left: 100px;
+    padding-top: 20px;
+     
+}
+
+.Fblink {
+    text-align: left;
+    padding-left: 100px;
+    font-weight: 100;
+}
+nav ul li .Facebook {
+    color: darkblue;
+    padding-top: 20px;
+}
+
+nav ul li .Instagram {
+    color: rgb(113, 18, 237);
+} 
+
+nav ul li .Youtube {
+    color: red;
+} 
+
+nav ul li .Twitter {
+    color: lightblue;
+} 
+
+

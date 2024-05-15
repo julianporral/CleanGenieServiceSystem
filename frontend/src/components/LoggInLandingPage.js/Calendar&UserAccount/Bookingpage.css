@@ -1,0 +1,129 @@
+.title {
+  padding-top: 20px;
+}
+
+.booking-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  padding-top: 15px;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  background-color:  #d2dee6;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.booking-header h1 {
+  font-size: 30px;
+  margin: 0;
+}
+
+.Line {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+.booking-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.booking-form {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.booking-form h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.calendar-container {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-container .calendar-header h2 {
+  margin-bottom: 20px;
+}
+
+.calendar {
+  border: none;
+}
+
+.calendar-header {
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  padding: 10px;
+}
+
+.calendar-day {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+}
+.current-date {
+  background-color: lightblue;
+}
+

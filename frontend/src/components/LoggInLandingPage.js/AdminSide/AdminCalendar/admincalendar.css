@@ -1,0 +1,120 @@
+/* AdminCalendar.css */
+
+/* Overall container */
+.admin-calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  padding: 20px;
+  border-radius: 20px; /* Add border-radius for a bubbly effect */
+}
+
+/* Title styling */
+.admin-calendar-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: left; /* Align to left */
+}
+
+/* Calendar and booking information container */
+.admin-calendar-info-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align items at the top */
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 20px; /* Add border-radius for a bubbly effect */
+}
+
+/* Calendar styling */
+.admin-calendar {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Add border-radius for a bubbly effect */
+  padding: 20px;
+  width: 80%; /* Increase width for better visibility */
+  height: 500px; /* Increase height for calendar */
+  margin-right: 20px; /* Add space between calendar and booking info */
+}
+
+/* Calendar navigation */
+.calendar-navigation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Increase margin bottom for better spacing */
+}
+
+/* Calendar navigation buttons */
+.calendar-navigation-button {
+  font-size: 1.2em; /* Increase font size for better visibility */
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Calendar navigation month */
+.calendar-navigation-month {
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* Calendar header styling */
+.admin-calendar-header {
+  display: flex;
+  justify-content: space-between; /* Spread header cells evenly */
+  margin-bottom: 20px; /* Increase margin bottom for better spacing */
+}
+
+/* Calendar header cell styling */
+.admin-header-cell {
+  flex: 1;
+  text-align: center;
+  padding: 15px; /* Increase padding for better spacing */
+}
+
+/* Calendar body styling */
+.admin-calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+/* Calendar cell styling */
+.admin-calendar-cell {
+  border: 1px solid #ccc;
+  padding: 15px; /* Increase padding for better spacing */
+  text-align: center;
+  cursor: pointer;
+  font-size: 1em; /* Adjust font size for better visibility */
+  border-radius: 20px; /* Add border-radius for a bubbly effect */
+}
+
+/* Styling for blank cells */
+.blank-cell {
+  background-color: #ddd;
+}
+
+/* Add this style to highlight the current date */
+.current-date {
+  background-color: lightblue; /* Light red */
+  border-radius: 20%;
+}
+
+/* Booking information styling */
+.admin-booking-info {
+  font-size: 0.9rem; /* Make booking info smaller */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Add border-radius for a bubbly effect */
+  background-color: #f9f9f9;
+  width: 17%; /* Adjust width for booking info */
+  height: 500px; /* Set a specific height */
+  overflow-y: auto; /* Enable vertical scroll */
+}
+
+/* Styling for back button */
+.admin-back-button {
+  position: absolute; /* Position the button */
+  bottom: 20px; /* Distance from the bottom */
+  left: 20px; /* Distance from the left */
+  text-decoration: none;
+  color:  #007bff;
+}

@@ -1,0 +1,62 @@
+.Material-sheet-form {
+    padding: 20px;
+    background-color: #ffffff; /* White background for the form */
+  }
+  
+  .Spread-Sheet {
+    margin-top: 20px;
+    overflow-x: auto; /* Add horizontal scrolling */
+    overflow-y: auto; /* Add vertical scrolling */
+    max-height: 500px; /* Set a maximum height for the container */
+  }
+  
+  .Sheet-Container {
+    width: 100%;
+  }
+  
+  .Sheet-Structure {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Ensure consistent column widths */
+  }
+  
+  .Sheet-Structure th,
+  .Sheet-Structure td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  .Sheet-Structure th {
+    background-color: #cce5ff; /* Light blue header */
+    text-align: left;
+  }
+  
+  .back-button {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff; /* Blue text for link */
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .back-button:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Input fields */
+  input[type="text"] {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0faff; /* Light blue background for input fields */
+  }
+  
+  /* Input fields on focus */
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #4d90fe; /* Light blue border color on focus */
+  }
+  

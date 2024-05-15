@@ -1,0 +1,120 @@
+/* ServiceEdit.css */
+
+/* Container */
+.ServiceEdit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* Title */
+.ServiceEdit h2 {
+  margin: 20px 0;
+  font-size: 24px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1; /* Ensure the title is above other elements */
+}
+
+/* Custom Form and Current Services */
+.custom-form-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+  align-items: flex-start; /* Align items to the top */
+  justify-content: space-between; /* Add space between the form and current services */
+  width: 100%;
+  max-width: 900px; /* Adjust as needed */
+  padding: 20px;
+  margin-top: 100px; /* Adjusted top margin to avoid overlap with title */
+}
+
+.custom-form {
+  flex: 1; /* Take up remaining space */
+  margin-right: 20px; /* Add space between form and current services */
+}
+
+.custom-form input {
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.custom-form button {
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-form button:hover {
+  background-color: #0056b3;
+}
+
+.current-services {
+  flex: 1; /* Take up remaining space */
+  font-size: 20px;
+  margin-left: 20px; /* Add space between form and current services */
+}
+
+/* Services List */
+.ServiceEdit .service-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 50px;
+}
+
+/* Service Item */
+.ServiceEdit .service-item {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.ServiceEdit .service-item img {
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+.ServiceEdit .service-item h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.ServiceEdit .service-item p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.ServiceEdit .service-item button {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.ServiceEdit .service-item button:hover {
+  background-color: #c82333;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  bottom: 20px; /* Adjusted to be at the bottom */
+  left: 20px;
+}

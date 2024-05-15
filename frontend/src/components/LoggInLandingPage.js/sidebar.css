@@ -1,0 +1,142 @@
+/* Add this to your sidebar.css file */
+
+.sidebar-container.menu-open .sidebar-header {
+  transform: translateX(0); /* Slide in the menu when it's open */
+}
+
+.sidebar-header {
+  width: 300px;
+  background-color: #9bddfb;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.sidebar-header.open {
+  transform: translateX(0); /* Slide in the menu when it's open */
+}
+
+/* Hide right panel on mobile */
+@media (max-width: 768px) {
+  .sidebar-container {
+    position: relative;
+    left: 0;
+  }
+
+  .sidebar-header {
+    left: -300px; /* Slide out the menu off-screen by default on mobile */
+  }
+
+  .right-panel {
+    display: none; /* Hide the right panel on mobile */
+  }
+}
+
+.profile-section h2,
+.navigation-section h2,
+.book-now h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.profile-info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.navigation-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-to-button,
+.book-now-button {
+  display: inline-block;
+  padding: 12px 24px;
+  margin-bottom: 10px;
+  color: rgb(250, 250, 250);
+  background-color: #0079eb;
+  border: 1px solid rgb(118, 155, 204);
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.link-to-button:hover,
+.book-now-button:hover {
+  background-color: #9bddfb;
+}
+
+.book-now-button {
+  background-color: #0079eb;
+  border-color: #0972eb;
+}
+
+.book-now-button:hover {
+  background-color: #05a3ff;
+}
+
+.right-panel {
+  width: 300px;
+  background-color: #9bddfb;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(228, 209, 209, 0.1);
+  height: calc(100vh - 40px);
+}
+
+/* sidebar.css */
+/* Existing styles... */
+/* sidebar.css */
+/* Existing styles... */
+
+/* Hamburger menu icon styles */
+.hamburger-menu-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.open:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.open:nth-child(2) {
+  opacity: 0;
+}
+
+.open:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Existing styles... */
