@@ -27,6 +27,7 @@ import MaterialData from './components/LoggInLandingPage.js/AdminSide/MaterialDa
 import ServiceEdit from './components/LoggInLandingPage.js/AdminSide/ServicesEdit/ServiceEdit';
 import UserAccounts from './components/LoggInLandingPage.js/AdminSide/UserAccounts/UserAccounts';
 import EditBookingForm from './components/LoggInLandingPage.js/AdminSide/CustomerBookingForm/EditBookingForm';
+import BookingInfo from './components/LoggInLandingPage.js/AdminSide/AdminCalendar/DeepDetails/BookingInfo';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -61,6 +62,10 @@ const App = () => {
         <Route exact path="/admin" component={AdminPage} />
         <Route path="/customerinquiry" component={CustomerInquiry}/>
         <Route path="/admincalendar" component={AdminCalendar} /> 
+        <Route path="/bookinginfo" component={BookingInfo} /> 
+        {/** Deep Details Booking Info*/}
+        <Route path="/BookingInfo" component={BookingInfo}/>
+
         <Route path="/galleryedit" component={ImageEdit}/>
         <Route path="/editbookingform" component={EditBookingForm}/> 
         <Route path="/adminfinancedata" component={AdminFinanceData}/>

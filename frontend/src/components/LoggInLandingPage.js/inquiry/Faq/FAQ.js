@@ -1,3 +1,5 @@
+/* AutomatedFAQ.jsx */
+
 import React, { useState, useRef, useEffect } from 'react';
 import { FaPaperPlane, FaSync, FaTimes } from 'react-icons/fa';
 import './FAQ.css';
@@ -62,10 +64,10 @@ const AutomatedFAQ = () => {
   useEffect(() => {
     if (isVisible) {
       setTimeout(() => {
-        messageContainerRef.current.classList.add('show-panel');
+        messageContainerRef.current.classList.add('faq-panel-show');
       }, 100);
     } else {
-      messageContainerRef.current.classList.remove('show-panel');
+      messageContainerRef.current.classList.remove('faq-panel-show');
     }
   }, [isVisible]);
 
@@ -75,27 +77,28 @@ const AutomatedFAQ = () => {
 
   return (
     <div className="faq-container">
-      <div ref={messageContainerRef} className="chat-panel">
-        <button className="hide-button" onClick={toggleVisibility}><FaTimes size={14} /></button>
-        <div className="chat-messages-container">
-          <div className="chat-messages">
+      <div ref={messageContainerRef} className="faq-panel">
+        <button className="faq-hide-button" onClick={toggleVisibility}><FaTimes /></button>
+        <div className="faq-chat-messages-container">
+          <div className="faq-chat-messages">
             {botMessages.map((message, index) => (
-              <div className="message" key={index}>
+              <div className="faq-message" key={index}>
                 <p><strong>You:</strong> {message.userMessage}</p>
                 <p><strong>Genie:</strong> {message.botResponse}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="user-input">
+        <div className="faq-user-input">
           <input
             type="text"
             value={userMessage}
             onChange={handleUserMessageChange}
-            placeholder="Ask a question..."
+            className="faq-input-text"
+            placeholder="Type your message..."
           />
-          <button className="send-button" onClick={handleSendMessage}><FaPaperPlane /></button>
-          <button className="refresh-button" onClick={handleRefreshMessages}><FaSync /></button>
+          <button className="faq-send-button" onClick={handleSendMessage}><FaPaperPlane /></button>
+          <button className="faq-refresh-button" onClick={handleRefreshMessages}><FaSync /></button>
         </div>
       </div>
       {!isVisible && (

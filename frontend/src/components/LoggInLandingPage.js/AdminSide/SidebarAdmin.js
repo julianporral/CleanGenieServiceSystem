@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 const SidebarAdmin = () => {
     return (
         <div className="new-sidebar-container">
@@ -13,12 +11,7 @@ const SidebarAdmin = () => {
             <div className="sidebar-batch">
                 <h2 className="sidebar-title">Updates</h2>
                 <ul>
-                <li>
-  <Link to="/customerinquiry" className="new-sidebar-button">
-    Inquiry Messages
-  </Link>
-</li>
-
+                    <li><Link to="/customerinquiry" className="new-sidebar-button">Inquiry Messages</Link></li>
                     <li><Link to="/admincalendar" className="new-sidebar-button">Calendar for Booking</Link></li>
                 </ul>
             </div>
@@ -38,7 +31,8 @@ const SidebarAdmin = () => {
                 <h2 className="sidebar-title">Data</h2>
                 <ul>
                     <li><Link to="/adminfinancedata" className="new-sidebar-button">Finance</Link></li>
-                    <li><Link to="/materialdata" className="new-sidebar-button">Material Data</Link></li>
+                    <li><Link to="/materialdata" className="new-sidebar-button">Inventory</Link></li>
+                    <li><Link to="/adminfinancedata" className="new-sidebar-button">Image Approval</Link></li>
                 </ul>
             </div>
 
@@ -46,7 +40,7 @@ const SidebarAdmin = () => {
             <div className="sidebar-batch">
                 <h2 className="sidebar-title">User Accounts</h2>
                 <ul>
-                    <li><Link to="/useraccount" className="new-sidebar-button">User Profile</Link></li>
+                    <li><Link to="/useraccount" className="new-sidebar-button">User Profiles</Link></li>
                 </ul>
             </div>
         </div>

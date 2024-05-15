@@ -1,11 +1,13 @@
 import React from 'react';
 import './admin.css'; // Import CSS if needed
 import SidebarAdmin from './SidebarAdmin';
+import CompanyLogo from './CompanyLogo.png';
 
 const AdminPage = () => {
+    
     return (
         <div>
-            <h1 className="sidebar-company-title">Clean Genie Cleaning Co.</h1>
+            <h1 className="sidebar-company-title">Clean Genie Cleaning Co.<input type="image" src={CompanyLogo} alt="Submit" width="50" height="40" /></h1> 
             <div className="new-container">
                 <SidebarAdmin />
                 <div className="new-content-container">

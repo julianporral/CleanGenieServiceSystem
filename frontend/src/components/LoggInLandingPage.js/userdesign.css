@@ -1,45 +1,41 @@
+/* Updated CSS for a more user-friendly design */
+
+/* Ensure sufficient contrast for readability */
 .user-landing-page {
   font-family: Arial, sans-serif;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  font-size: 30px;
-  margin: 0;  
+  background-color: #fff; /* White background */
+  color: #333; /* Dark text color */
 }
 
 .notification {
-  background-color: #f0f0f0;
+  background-color: #f8f9fa; /* Light gray notification background */
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   margin-bottom: 20px;
+  color: #333; /* Dark notification text color */
 }
 
 .booking-history h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .booking-item {
-  border: 1px solid #ccc;
+  border: 1px solid #e0e0e0; /* Light gray border */
   border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  position: relative;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #fafafa; /* Off-white background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
 }
 
 .booking-item p {
-  margin: 5px 0;
+  margin: 10px 0;
+  font-size: 16px;
 }
 
 .booking-item .booked-at {
@@ -47,25 +43,41 @@
   top: 10px;
   right: 10px;
   font-size: 12px;
+  color: #666; /* Gray text color for meta info */
 }
 
-/* New styling for the form */
-.user-info-form {
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  padding: 20px;
+/* Styling for the filter */
+.filter-container {
+  margin-bottom: 20px;
 }
 
+.filter-label {
+  font-weight: bold;
+  color: #333; /* Dark label text color */
+}
+
+.filter-input {
+  width: calc(100% - 20px); /* Adjusted width to account for padding */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Styling for form elements */
 .user-info-form label {
   font-weight: bold;
+  color: #333; /* Dark label text color */
 }
 
 .user-info-form input {
-  width: 100%;
+  width: calc(100% - 20px); /* Adjusted width to account for padding */
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 16px;
 }
 
 .user-info-form button {
@@ -75,13 +87,36 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
-  text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .user-info-form button:hover {
   background-color: #0056b3;
+}
+
+/* Styling for the main container */
+.main-container {
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 20px;
+  padding-top: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  margin-bottom: 20px;
+}
+
+.datepicker {
+  padding-top: 10px;
+}
+
+.scroll-container {
+  overflow-y: auto; /* Add vertical scroll bar if content exceeds container height */
+  max-height: 62vh; /* Set maximum height for the container */
+}
+
+.signout-button {
+  padding: 5px 8px; /* Adjust padding for smaller size */
+  font-size: 12px; /* Adjust font size for smaller size */
+  width: auto; /* Set width to adjust based on content */
 }

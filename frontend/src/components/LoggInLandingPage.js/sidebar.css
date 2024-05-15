@@ -1,7 +1,18 @@
-/* Add this to your sidebar.css file */
+/* Add spacing between navigation links */
+.navigation-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-links a {
+  margin-bottom: 10px;
+  display: block;
+  text-decoration: none;
+  color: white;
+}
 
 .sidebar-container.menu-open .sidebar-header {
-  transform: translateX(0); /* Slide in the menu when it's open */
+  transform: translateX(0);
 }
 
 .sidebar-header {
@@ -17,11 +28,11 @@
   height: calc(100% - 40px);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease; /* Add transition for smooth animation */
+  transition: transform 0.3s ease;
 }
 
 .sidebar-header.open {
-  transform: translateX(0); /* Slide in the menu when it's open */
+  transform: translateX(0);
 }
 
 /* Hide right panel on mobile */
@@ -32,11 +43,11 @@
   }
 
   .sidebar-header {
-    left: -300px; /* Slide out the menu off-screen by default on mobile */
+    left: -300px;
   }
 
   .right-panel {
-    display: none; /* Hide the right panel on mobile */
+    display: none;
   }
 }
 
@@ -52,16 +63,11 @@
   margin-bottom: 10px;
 }
 
-.navigation-links {
-  display: flex;
-  flex-direction: column;
-}
-
+/* Styles for links */
 .link-to-button,
 .book-now-button {
   display: inline-block;
   padding: 12px 24px;
-  margin-bottom: 10px;
   color: rgb(250, 250, 250);
   background-color: #0079eb;
   border: 1px solid rgb(118, 155, 204);
@@ -101,13 +107,9 @@
   height: calc(100vh - 40px);
 }
 
-/* sidebar.css */
-/* Existing styles... */
-/* sidebar.css */
-/* Existing styles... */
-
 /* Hamburger menu icon styles */
 .hamburger-menu-icon {
+  display: none; /* Hide the icon by default */
   position: fixed;
   top: 20px;
   right: 20px;
@@ -139,4 +141,9 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Existing styles... */
+/* Show the icon only on Android screens */
+@media only screen and (max-width: 768px) and (min-width: 320px) and (pointer: coarse) {
+  .hamburger-menu-icon {
+    display: flex;
+  }
+}

@@ -6,12 +6,10 @@ import { collection, setDoc, doc } from 'firebase/firestore';
 import { FaFacebookF, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import './inquiry.css';
 
-// Your Firebase configuration
-
-
 const Inquiry = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [user, setUser] = useState(null);
 
@@ -21,6 +19,7 @@ const Inquiry = () => {
         setUser(userDetails)
         setName(userDetails.username)
         setEmail(userDetails.email)
+        setPhone(userDetails.phone)
       })
     }
   }, [auth])
@@ -28,21 +27,18 @@ const Inquiry = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Get a reference to the database
-      
       const dataInquiry = {
         name,
         email,
+        phone,
         message,
         timestamp: new Date().toISOString()
-      }
-      // Push the inquiry data to firestore
+      };
+
       const inquiryRef = collection(db, "inquiries");
-      await setDoc(doc(inquiryRef), dataInquiry)
+      await setDoc(doc(inquiryRef), dataInquiry);
       alert('Inquiry sent successfully!');
 
-      // Clear the form fields after sending the inquiry
-      
       setMessage('');
     } catch (error) {
       console.error('Error sending inquiry:', error);
@@ -76,6 +72,10 @@ const Inquiry = () => {
               <label htmlFor="email">Email:</label>
               <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your email" required />
             </div>
+            <div className='form-group'>
+            <label htmlFor="phone">Phone:</label>
+              <input type="text" id="name" phone="phone" value={phone} onChange={(e) => setName(e.target.value)} placeholder="Your Phone Number" required />
+            </div>
             <div className="form-group">
               <label htmlFor="message">Message:</label>
               <textarea id="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)} rows="4" placeholder="Your message" required></textarea>
@@ -97,3 +97,5 @@ const Inquiry = () => {
 };
 
 export default Inquiry;
+
+

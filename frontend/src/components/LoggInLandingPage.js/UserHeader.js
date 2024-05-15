@@ -1,90 +1,116 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
-import { auth } from '../GoogleSignin/config';
-
-const UserInfo = ({ currentUser }) => {
-  return (
-    <div className="profile-info">
-      <p>{currentUser ? currentUser.displayName : "No User"}</p>
-    </div>
-  );
-};
+import { getUserDetails } from '../GoogleSignin/config';
+import { FaBars } from 'react-icons/fa';
 
 const UserHeader = () => {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track menu visibility on mobile
+  const [userName, setUserName] = useState('');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [ocularVisits, setOcularVisits] = useState([]);
+  const userBookingId = 'user_booking_id'; // Replace 'user_booking_id' with the actual user's booking ID
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      if (user) {
-        setCurrentUser(user);
-        setLoading(false);
-      } else {
-        setCurrentUser(null);
-        setLoading(false);
-      }
-    });
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
-    return () => unsubscribe();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  const handleSignOut = () => {
-    auth.signOut()
-      .then(() => {
-        console.log('Sign-out successful');
-        setCurrentUser(null);
-        window.location.href = '/';
-      })
-      .catch((error) => {
-        console.error('Error signing out: ', error);
-      });
-  };
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const userDetails = await getUserDetails();
+        setUserName(userDetails.username);
+      } catch (error) {
+        console.error('Error fetching user name:', error);
+      }
+    };
 
-  // Function to toggle menu visibility on mobile
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    fetchUserName();
+  }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    const fetchOcularVisits = async () => {
+      try {
+        // Fetch ocular visits
+        // This should be filtered based on the current user's booking ID
+        // Replace the following lines with the appropriate Firebase Firestore queries
+        /*
+        const querySnapshot = await getDocs(collection(db, 'ocularvisits'));
+        const fetchedOcularVisits = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const userOcularVisits = fetchedOcularVisits.filter(visit => visit.bookingId === userBookingId);
+        */
+        // For now, set sample data
+        const sampleOcularVisits = [
+          { id: 1, selectedDate: new Date(), details: 'Sample visit 1', bookingId: 'user_booking_id' },
+          { id: 2, selectedDate: new Date(), details: 'Sample visit 2', bookingId: 'other_booking_id' },
+        ];
+        const userOcularVisits = sampleOcularVisits.filter(visit => visit.bookingId === userBookingId);
+        
+        setOcularVisits(userOcularVisits);
+      } catch (error) {
+        console.error('Error fetching ocular visits:', error);
+      }
+    };
+
+    fetchOcularVisits();
+  }, []);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   return (
-    <div className={`sidebar-container ${isMenuOpen ? 'menu-open' : ''}`}>
-      <div className="sidebar-header">
-        {/* Hamburger menu icon */}
-        <div className="hamburger-menu-icon" onClick={toggleMenu}>
-          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
-          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
-          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+    <div className={isMobile ? "sidebar-container-mobile" : "sidebar-container-desktop"}>
+      {isMobile && (
+        <div className="burger-menu" onClick={toggleSidebar}>
+          <FaBars />
         </div>
-        {/* Profile and navigation sections */}
+      )}
+      <div className="sidebar-header">
         <div className="profile-section"> 
           <h2>Customer Profile</h2>
-          <UserInfo currentUser={currentUser} />
+          <p>Welcome, {userName || "User"}</p>
         </div>
-        <div className={`navigation-section ${isMenuOpen ? 'open' : ''}`}>
-          <div className="navigation-links">
-            <h2>Menu</h2>
-            <Link to="/userlandingpage" className="link-to-button">History</Link>
-            <Link to="/screenshot" className="link-to-button">Payment Method</Link>
-            <Link to="/inquiry" className="link-to-button">Inquiry</Link>
+        {(isMobile && sidebarOpen) || !isMobile ? (
+          <div className="navigation-section">
+            <div className="navigation-links">
+              <h2>Menu</h2>
+              <ul>
+                <li><Link to="/userlandingpage" className="link-to-button">History</Link></li>
+                <li><Link to="/screenshot" className="link-to-button">Payment Method</Link></li>
+                <li><Link to="/inquiry" className="link-to-button">Inquiry</Link></li>
+              </ul>
+            </div>
           </div>
-        </div>
+        ) : null}
         <div className="book-now">
           <h2>Booking Page</h2>
           <Link to="/booking" className="link-to-button book-now-button">BOOK NOW</Link>
         </div>
       </div>
-      {/* Additional panel */}
-      <div className={`right-panel ${isMenuOpen ? 'hide-on-mobile' : ''}`}>
-        <h2>Ongoing Service</h2>
-        <p>-- .</p>
-      </div>
-      {/* Overlay to close the menu when clicked outside */}
-      {isMenuOpen && <div className="overlay" onClick={toggleMenu}></div>}
+      {(isMobile && sidebarOpen) || !isMobile ? (
+        <div className="right-panel">
+          <div className="ocular-visits-list">
+            {ocularVisits.map(visit => (
+              <div key={visit.id} className="ocular-visit-item">
+                <p>Date: {visit.selectedDate instanceof Date ? visit.selectedDate.toLocaleDateString() : 'Invalid Date'}</p>
+                <p>Details: {visit.details}</p>
+                  
+                
+              </div>
+            ))}
+          </div>
+        
+        </div>
+      ) : null}
     </div>
   );
 };

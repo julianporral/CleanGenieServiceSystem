@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../GoogleSignin/config';
-import { doc, onSnapshot, setDoc } from 'firebase/firestore';
-import './userdesign.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import './userdesign.css'; // Import your existing CSS file
+import { FaBars } from 'react-icons/fa'; // Import burger menu icon from react-icons library
+import CompanyLogo from './CompanyLogo.png';
 
-const UserLandingPage = (props) => {
-    const [userDetails, setUserDetails] = useState(null);
-    const [userText, setUserText] = useState('');
-    const [savedTexts, setSavedTexts] = useState([]);
-    const [bookingHistory, setBookingHistory] = useState([]);
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track menu visibility on mobile
+const UserLandingPage = () => {
+    const [bookings, setBookings] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); // Default to today's date
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // State to track mobile view
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to track sidebar open/close
 
     useEffect(() => {
-        const unsubscribeAuth = auth.onAuthStateChanged(async (user) => {
-            if (user) {
-                const docRef = doc(db, "Users", user.uid);
-                const unsubscribeSnapshot = onSnapshot(docRef, (doc) => {
-                    if (doc.exists()) {
-                        setUserDetails(doc.data());
-                        setSavedTexts(doc.data().savedTexts || []);
-                        setBookingHistory(doc.data().bookingHistory || []);
-                    } else {
-                        console.log("User data not found");
-                    }
-                });
-                return () => unsubscribeSnapshot();
-            } else {
-                console.log("User is not logged in");
+        const fetchUserBookings = async () => {
+            try {
+                const user = auth.currentUser;
+                if (user) {
+                    const userBookingsQuery = query(collection(db, 'bookings'), where('userId', '==', user.uid));
+                    const querySnapshot = await getDocs(userBookingsQuery);
+                    const userBookingsData = querySnapshot.docs.map(doc => doc.data());
+                    setBookings(userBookingsData);
+                    setLoading(false);
+                } else {
+                    setLoading(false);
+                }
+            } catch (error) {
+                console.error('Error fetching user bookings:', error);
+                setLoading(false);
             }
-        });
+        };
 
-        return () => unsubscribeAuth();
+        fetchUserBookings();
     }, []);
 
     const handleSignOut = () => {
@@ -44,97 +45,97 @@ const UserLandingPage = (props) => {
             });
     };
 
-    const handleChange = (event) => {
-        setUserText(event.target.value);
+    const handleDateChange = (e) => {
+        setSelectedDate(e.target.value);
     };
 
-    const handleSave = async () => {
-        if (userText.trim() !== '') {
-            const updatedTexts = [...savedTexts, userText];
-            const updatedBookingHistory = [...bookingHistory];
-            const bookingData = props.location?.state?.bookingData;
-
-            if (bookingData) {
-                updatedBookingHistory.push(bookingData);
-            }
-
-            setSavedTexts(updatedTexts);
-            setBookingHistory(updatedBookingHistory);
-
-            try {
-                const user = auth.currentUser;
-                if (user) {
-                    const docRef = doc(db, "Users", user.uid);
-                    await setDoc(docRef, { savedTexts: updatedTexts, bookingHistory: updatedBookingHistory }, { merge: true });
-                    setUserText('');
-                }
-            } catch (error) {
-                console.error('Error saving text: ', error);
-            }
-        }
+    const toggleSidebar = () => {
+        setIsSidebarOpen(prevState => !prevState); // Toggle sidebar state
     };
 
-    // Function to toggle menu visibility on mobile
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    // Update isMobile state on window resize
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    const filteredBookings = bookings.filter(booking => booking.selectedDate === selectedDate);
+    const remainingBookings = bookings.filter(booking => booking.selectedDate !== selectedDate);
 
     return (
-        <div className={`user-landing-page ${isMenuOpen ? 'menu-open' : ''}`}>
+        <div className="user-landing-page">
             <header className="header">
-                <h1>Clean Genie Cleaning Co.</h1>
-                <button onClick={handleSignOut}>Sign Out</button>
-            </header>
-            {/* Hamburger menu icon */}
-            <div className="hamburger-menu-icon" onClick={toggleMenu}>
-                <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
-                <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
-                <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
-            </div>
-            {/* Menu panel */}
-            {isMenuOpen && (
-                <div className="menu-panel">
-                    <nav>
-                        <ul>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                            {/* Add more menu items as needed */}
-                        </ul>
-                    </nav>
+                {/* Render the burger menu icon only if it's in mobile view */}
+                {isMobile && (
+                    <div className="burger-menu" onClick={toggleSidebar}>
+                        <FaBars />
+                    </div>
+                )}
+                <div className="header-content">
+                    <h1>Clean Genie Cleaning Co.  <img src={CompanyLogo} alt="Submit" width="50" height="40" />
+                    <button className="signout-button" onClick={handleSignOut}>Sign Out</button></h1>  
+                    <div className="logo-signout">
+                      
+                    </div>
                 </div>
-            )}
+                
+            </header>
+          
             <main className="main-container">
                 <section className="user-info">
-                    <h2>Welcome, {userDetails ? userDetails.username : 'User'}!</h2>
-                    <div className="text-area-container">
-                        <textarea value={userText} onChange={handleChange} placeholder="Write something..." />
-                        <button onClick={handleSave}>Save</button>
+                    <div className="date-picker">
+                        <label htmlFor="datepicker">Select Date:</label>
+                        <input
+                            type="date"
+                            id="datepicker"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                        />
                     </div>
-                    <div className="saved-texts-container">
-                        {savedTexts.map((text, index) => (
-                            <div key={index} className="saved-text">
-                                <p>{text}</p>
-                            </div>
+                    <h3>Bookings for {selectedDate}</h3>
+                    <ul className="booking-list">
+                        {filteredBookings.map((booking, index) => (
+                            <li key={index} className="booking-item">
+                                <p><strong>Name:</strong> {booking.name}</p>
+                                <p><strong>Region:</strong> {booking.region}</p>
+                                <p><strong>Date:</strong> {booking.selectedDate}</p>
+                                <p><strong>Payment Method:</strong> {booking.paymentMethod}</p>
+                                <p><strong>Total Price:</strong> {booking.totalPrice}</p>
+                                <p><strong>Booked At:</strong> {booking.bookedAt}</p>
+                                <p><strong>Service:</strong> {booking.service}</p>
+                            </li>
                         ))}
-                    </div>
-                </section>
-                <section className="booking-history">
-                    <h2>Booking History</h2>
-                    <div className="booking-items-container">
-                        {bookingHistory.map((booking, index) => (
-                            <div key={index} className="booking-item">
-                                <p>Name: {booking.name}</p>
-                                <p>Region: {booking.region}</p>
-                                <p>Date: {booking.selectedDate}</p>
-                                <p>Total Price: {booking.totalPrice}</p>
-                                <p>Booked At: {booking.bookedAt}</p>
-                                <p>Service: {booking.service}</p>
-                            </div>
+                        {/* Show remaining bookings below */}
+                        {remainingBookings.map((booking, index) => (
+                            <li key={index} className="booking-item">
+                                <p><strong>Region:</strong> {booking.region}</p>
+                                <p><strong>Date:</strong> {booking.selectedDate}</p>
+                                <p><strong>Payment Method:</strong> {booking.paymentMethod}</p>
+                                <p><strong>Total Price:</strong> {booking.totalPrice}</p>
+                                <p><strong>Booked At:</strong> {booking.bookedAt}</p>
+                                <p><strong>Service:</strong> {booking.service}</p>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </section>
             </main>
+            {/* Conditionally render the sidebar based on isSidebarOpen state */}
+            {isSidebarOpen && (
+                <aside className="sidebar">
+                    {/* Add your sidebar content here */}
+                </aside>
+            )}
         </div>
     );
 };

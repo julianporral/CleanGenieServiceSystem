@@ -52,4 +52,10 @@
     text-decoration: none;
     color: #007bff;
   }
+
+  .inquiry-message-container {
+    max-height: 100px; /* Set the maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
   

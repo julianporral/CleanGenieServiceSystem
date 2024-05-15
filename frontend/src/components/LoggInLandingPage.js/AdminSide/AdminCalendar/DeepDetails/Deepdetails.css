@@ -1,0 +1,74 @@
+.admin-calendar-info-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.panel-container {
+  flex: 1 1 45%;
+  margin-right: 20px;
+}
+
+.panel-content {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.admin-calendar {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.calendar-navigation-month {
+  font-weight: bold;
+}
+
+.admin-calendar-header {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f0f0f0;
+}
+
+.admin-header-cell {
+  padding: 10px;
+}
+
+.admin-calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.admin-calendar-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  border: 1px solid #ccc;
+}
+
+.blank-cell {
+  background-color: #f0f0f0;
+}
+
+.booked-date {
+  background-color: #aaffaa;
+}
+
+.ocular-visit {
+  background-color: orange;
+}
+
+.panel-container + .panel-container {
+  margin-top: 0;
+  margin-right: 0;
+}

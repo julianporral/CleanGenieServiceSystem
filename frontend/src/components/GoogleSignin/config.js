@@ -28,6 +28,7 @@ const getUserDetails = async () => {
     return {
       username: user.username,
       email: user.email,
+      phone: user.phone,
       firstname: user.firstname,
       lastname: user.lastname,
       role: user.role,

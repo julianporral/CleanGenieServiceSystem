@@ -10,6 +10,7 @@ const Register = ({ onRegisterSuccess }) => {
     username: '',
     firstName: '',
     lastName: '',
+    phone: '',
     email: '',
     password: ''
   });
@@ -29,8 +30,8 @@ const Register = ({ onRegisterSuccess }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { username, firstName, lastName, email, password } = formData;
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const { username, firstName, lastName, email, password, phone } = formData;
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password, phone);
       const newUser = userCredential.user;
       if (newUser) {
         const role = 'customer'; // Hardcoded role for admin registration
@@ -38,6 +39,7 @@ const Register = ({ onRegisterSuccess }) => {
           username,
           firstName,
           lastName,
+          phone,
           email: newUser.email,
           role
         });
@@ -65,6 +67,7 @@ const Register = ({ onRegisterSuccess }) => {
         <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleInputChange} />
         <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleInputChange} />
         <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleInputChange} />
+        <input type="phone" name="phone" placeholder="Phone" value={formData.phone} onChange={handleInputChange} /> 
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} />
         <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleInputChange} />
         <button type="submit" disabled={loading}>{loading ? 'Loading...' : 'Register'}</button>

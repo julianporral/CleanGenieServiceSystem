@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaArrowLeft } from 'react-icons/fa'; // Import arrow icons
 import { Link } from 'react-router-dom';
+import CompanyLogo from './CompanyLogo.png';
 
 const EditBookingForm = () => {
   const [region, setRegion] = useState('Manila/Quezon City/Bulacan');
@@ -25,7 +26,7 @@ const EditBookingForm = () => {
   };
 
   return (
-    <div className='edit-booking-title'>   <h2>Booking Form</h2>
+    <div className='edit-booking-title'>   <h2>Booking Form <input type="image" src={CompanyLogo} alt="Submit" width="50" height="40" /></h2>
     <div className="booking-page">
      
       <div className="booking-content">

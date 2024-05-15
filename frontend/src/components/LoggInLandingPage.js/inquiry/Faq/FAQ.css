@@ -1,3 +1,5 @@
+/* FAQ.css */
+
 .faq-container {
   position: fixed;
   bottom: 20px;
@@ -14,7 +16,7 @@
   cursor: pointer;
 }
 
-.chat-panel {
+.faq-panel {
   position: fixed;
   bottom: 80px;
   right: 20px;
@@ -24,14 +26,15 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.show-panel {
+.faq-panel-show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.hide-button {
+.faq-hide-button {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -43,26 +46,27 @@
   padding: 4px;
 }
 
-.hide-button:hover {
+.faq-hide-button:hover {
   color: #0056b3;
 }
 
-.chat-messages-container {
+.faq-chat-messages-container {
   max-height: 300px;
   overflow-y: auto;
 }
 
-.chat-messages {
+.faq-chat-messages {
   padding: 10px;
 }
 
-.user-input {
+.faq-user-input {
   display: flex;
   align-items: center;
   padding: 10px;
+  border-top: 1px solid #ccc;
 }
 
-.user-input input[type="text"] {
+.faq-input-text {
   flex: 1;
   padding: 8px;
   border: 1px solid #ccc;
@@ -71,7 +75,8 @@
   font-size: 14px;
 }
 
-.user-input button {
+.faq-send-button,
+.faq-refresh-button {
   padding: 8px 12px;
   background-color: #007bff;
   color: #fff;
@@ -80,7 +85,16 @@
   cursor: pointer;
 }
 
-.message {
+.faq-refresh-button {
+  margin-right: 5px;
+}
+
+.faq-send-button:hover,
+.faq-refresh-button:hover {
+  background-color: #0056b3;
+}
+
+.faq-message {
   background-color: #f0f8ff;
   border-radius: 5px;
   padding: 8px 12px;
@@ -88,11 +102,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.message p {
+.faq-message p {
   margin: 0;
 }
 
-.message p:first-child {
+.faq-message p:first-child {
   font-weight: bold;
   margin-bottom: 4px;
 }
